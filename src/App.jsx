@@ -10,8 +10,8 @@ function App() {
       <ChakraProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="FormularioPresent" element={<FormularioPresent />} />
-          <Route path="FormularioEmpleo" element={<FormularioEmpleo />} />
+          <Route path="/FormularioPresent" element={<FormularioPresent />} />
+          <Route path="/FormularioEmpleo" element={<FormularioEmpleo />} />
         </Routes>
       </ChakraProvider>
     </Router>
