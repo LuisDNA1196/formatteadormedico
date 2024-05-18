@@ -1,5 +1,6 @@
 import { Container, Text, Flex, Heading } from '@chakra-ui/react';
 import { ButtonWitha } from './Button';
+import ReglaLink from './ReglaLink';
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
           <ButtonWitha href="/FormularioPresent" colorScheme="teal" name="Solicitar Empleo" />
           <ButtonWitha href="/FormularioEmpleo" colorScheme="green" name="Ofrecer Empleo" />
         </Flex>
+          <ReglaLink/>
       </Container>
     </Flex>
   );
