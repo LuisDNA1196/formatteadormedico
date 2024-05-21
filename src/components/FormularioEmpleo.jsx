@@ -14,7 +14,8 @@ import {
     IconButton,
     Flex,
   } from '@chakra-ui/react'
-  import { InfoOutlineIcon, } from '@chakra-ui/icons'
+
+  import { InfoOutlineIcon,RepeatIcon,CopyIcon } from '@chakra-ui/icons'
 import { useState } from 'react';
 import ReglaLink from './ReglaLink';
 
@@ -250,18 +251,19 @@ export const FormularioEmpleo = () => {
         value={formatText()}
         rows={10}
         placeholder='Here is a sample placeholder'  />
-        <Container className=" text-center mt-4 flex justify-between gap-3">
-          
-        <Button  onClick={validateForm} colorScheme='green'>
-              Validar y Copiar
-          </Button>
-          <ReglaLink></ReglaLink> 
-         <Button  onClick={resetForm} colorScheme='orange'>
-              Limpiar Campos
-          </Button>
-
-          
-        </Container>
+        <Container className="text-center mt-4">
+            <div className="flex justify-evenly gap-4 sm:text-xs">
+              <Button onClick={validateForm} colorScheme="green" rightIcon={<CopyIcon />} >
+                Copiar
+              </Button>
+              <Button onClick={resetForm} colorScheme="orange" rightIcon={<RepeatIcon />}>
+                Reiniciar
+              </Button>
+            </div>
+            <div className="mt-4">
+              <ReglaLink />
+            </div>
+          </Container>
       </Container>
     </>
     )

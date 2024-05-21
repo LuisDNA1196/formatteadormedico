@@ -12,22 +12,22 @@ const Home = () => {
       w="full"
     >
       <Container className="text-center">
-        <Heading as="h1" fontSize="2xl" pretty>Bienvenido Doctor@/Proveedor@</Heading>
-        <Container className="mt-10">
-          <Text fontSize="lg" as="i">Busco...</Text>
+        <Heading as="h1" fontSize="2xl" pretty>Bienvenido Doctor@/Proveedor@</Heading></Container>
+        <Container className="mt-10 text-center">
+          <Text fontSize="xl" as="i">Busco...</Text>
         </Container>
         <Flex 
           direction={{ base: 'column', md: 'row' }} 
-          mt={10} 
-          gap={4}
-          justify="center" // Asegura que los botones estén centrados
-          align="center"   // Asegura que los botones estén alineados verticalmente
+          mt={8} 
+          gap={8}
+          justify="center" 
+          align="center"  
         >
           <ButtonWitha href="/FormularioPresent" colorScheme="teal" name="Solicitar Empleo" />
           <ButtonWitha href="/FormularioEmpleo" colorScheme="green" name="Ofrecer Empleo" />
-        </Flex>
           <ReglaLink/>
-      </Container>
+        </Flex>
+      
     </Flex>
   );
 };
