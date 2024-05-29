@@ -7,7 +7,7 @@ const ReglaLink = () => {
   return (
   <> 
     <Link href='https://drive.google.com/file/d/1fMj4rmKFiCgwodohU3XThO231cIuFtYw/view?usp=sharing' isExternal>
-        <Button colorScheme='blue'
+        <Button colorScheme='teal' variant='outline'
             aria-label='Reglamento' 
             rightIcon={<DownloadIcon />}> 
             Reglamento

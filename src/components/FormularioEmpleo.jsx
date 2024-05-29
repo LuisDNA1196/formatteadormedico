@@ -8,32 +8,25 @@ import {
     Textarea,
     Button,
     useToast,
-    CloseButton, 
     Text,
     Tooltip,
     IconButton,
     Flex,
+    Box,
+
   } from '@chakra-ui/react'
 
   import { InfoOutlineIcon,RepeatIcon,CopyIcon } from '@chakra-ui/icons'
 import { useState } from 'react';
 import ReglaLink from './ReglaLink';
+import ButtonWitha from './ButtonWitha';
+import WhatsBox from './WhatsBox';
+import { initialFormDataEmpleo } from '../assets/formDatas';
 
 export const FormularioEmpleo = () => { 
-  const initialFormData = {  
-    tipo_de_cobertura:'',
-    fecha: '',
-    horario: '',
-    sueldo: '',
-    ubicacion: '',
-    sexo:'',
-    costo_consulta: '',
-    experiencia: '',
-    comentarios_adicionales: '',
-    remember: false
-  }
+ 
 
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState(initialFormDataEmpleo);
   const toast = useToast();
 
   const handleChange = (e) => {
@@ -61,7 +54,7 @@ export const FormularioEmpleo = () => {
 
     let formattedText = '';
 
-    formattedText += `*_Formato de Empleo_*\n`;
+    formattedText += `*_\`Formato de Empleo\`_*\n`;
 
     // Resto del formato para otros campos
     for (const [key, value] of Object.entries(formData)) {
@@ -77,7 +70,37 @@ export const FormularioEmpleo = () => {
     return formattedText;
   };
 
-  
+  const formatPreviewText = () => {
+    const capitalizeFirstLetter = (str) => {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
+    const formatDate = (dateString) => {
+      const date = new Date(dateString);
+      const day = date.getDate() + 1;
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    };
+
+   
+    const previewItems = Object.entries(formData)
+      .filter(([key]) => key !== 'remember')
+      .map(([key, value]) => {
+        const formattedKey = key.split('_').map(capitalizeFirstLetter).join(' ');
+        const formattedValue = key === 'fecha' ? formatDate(value) : value;
+        return (
+          <Box key={key} mb={2} align="left">
+            <Text as="span" fontWeight="bold">{formattedKey}:</Text>
+            <br/>
+            <Text as="span">• {formattedValue}</Text>
+          </Box>
+        );
+      });
+
+    return previewItems;
+  };
+
   const copyToClipboard = () => {
     const textToCopy = formatText();
     navigator.clipboard.writeText(textToCopy);
@@ -116,7 +139,7 @@ export const FormularioEmpleo = () => {
   };
 
   const resetForm = () => {
-    setFormData(initialFormData);
+    setFormData(initialFormDataEmpleo);
     toast({
       title: 'Formulario reiniciado',
       description: "Todos los campos han sido reiniciados.",
@@ -126,13 +149,17 @@ export const FormularioEmpleo = () => {
     });
   };
 
+  const dateValue = () => {
+    return formData.fecha == isNaN ? ' ' : formData.fecha;  }
+
+
     return (
       <>
     <Container className=" m-10 text-center"> 
-    <Text fontSize='2xl'>Formato Empleo</Text>
        <Container className=" items-end justify-end flex ">
-         <a  href="/" ><CloseButton size='lg'/></a>
+         <ButtonWitha name='Regresar' colorScheme='red' href="/" ></ButtonWitha>
        </Container>  
+    <Text className='mb-8' fontSize='2xl' >Formato Empleo</Text>
       <FormLabel htmlFor="tipo_de_cobertura">Tipo de cobertura</FormLabel>
       <Select 
         className='mb-2' 
@@ -155,7 +182,7 @@ export const FormularioEmpleo = () => {
       id='fecha' 
       placeholder='Select Date and Time' size='lg' type='date' 
       onChange={handleChange} 
-      value={formData.fecha}/>
+      value= {dateValue()}/>
 
       <FormLabel htmlFor="horario">Horario</FormLabel>
       <Input className='mb-2' size='lg'
@@ -244,13 +271,21 @@ export const FormularioEmpleo = () => {
         placeholder='Comentarios adicionales.' 
         value={formData.comentarios_adicionales} />
 
-      <FormLabel htmlFor="">Texto formateado</FormLabel>
+      {/* <FormLabel htmlFor="">Texto formateado</FormLabel>
         <Textarea
         variant='filled' 
         readOnly
         value={formatText()}
         rows={10}
-        placeholder='Here is a sample placeholder'  />
+        placeholder='Here is a sample placeholder'
+        
+        /> */}
+        
+        <WhatsBox 
+        contenidotxt={formatPreviewText()} 
+        title="Formato Empleo" 
+        />
+        
         <Container className="text-center mt-4">
             <div className="flex justify-evenly gap-4 sm:text-xs">
               <Button onClick={validateForm} colorScheme="green" rightIcon={<CopyIcon />} >

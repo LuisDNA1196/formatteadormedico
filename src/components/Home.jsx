@@ -1,5 +1,5 @@
 import { Container, Text, Flex, Heading } from '@chakra-ui/react';
-import { ButtonWitha } from './Button';
+import ButtonWitha from './ButtonWitha';
 import ReglaLink from './ReglaLink';
 
 const Home = () => {
@@ -12,7 +12,7 @@ const Home = () => {
       w="full"
     >
       <Container className="text-center">
-        <Heading as="h1" fontSize="2xl" pretty>Bienvenido Doctor@/Proveedor@</Heading></Container>
+        <Heading fontSize="2xl" >Bienvenido Doctor@/Proveedor@</Heading></Container>
         <Container className="mt-10 text-center">
           <Text fontSize="xl" as="i">Busco...</Text>
         </Container>

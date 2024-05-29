@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react"
 
 
-export const ButtonWitha = ({name, href,colorScheme}) => {
+ const ButtonWitha = ({name, href,colorScheme}) => {
   return (
     <>
      <a className=" sm:text-xs sm:px-2 sm:py-1" href={href}>
@@ -12,3 +12,5 @@ export const ButtonWitha = ({name, href,colorScheme}) => {
     </> 
   )
 }
+
+export default ButtonWitha
