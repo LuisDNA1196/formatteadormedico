@@ -24,6 +24,7 @@ import {
   
   validateForm,
 } from '../hooks/formatTextP.jsx';
+import TransitionExample from './WaModal.jsx';
 
 export const FormularioPresent = () => {
   const [formData, setFormData] = useState(initialFormDataPresent);
@@ -184,18 +185,20 @@ export const FormularioPresent = () => {
         <WhatsBox contenidotxt={formatPreviewText(formData)} title="Formato Presentación" />
 
         <Container className="text-center mt-4">
-          <div className="flex justify-evenly gap-4 sm:text-xs">
-            <Button onClick={handleSubmit} colorScheme="green" rightIcon={<CopyIcon />}>
-              Copiar
-            </Button>
-            <Button onClick={handleReset} colorScheme="orange" rightIcon={<RepeatIcon />}>
-              Reiniciar
-            </Button>
-          </div>
-          <div className="mt-4">
-            <ReglaLink />
-          </div>
-        </Container>
+            <div className="flex justify-evenly gap-4 sm:text-xs">
+              <Button onClick={handleSubmit} colorScheme="green" rightIcon={<CopyIcon />} className='w-[130px]' >
+                Copiar
+              </Button>
+              <Button onClick={handleReset} colorScheme="orange" rightIcon={<RepeatIcon />} className='w-[130px]'>
+                Reiniciar
+              </Button>
+            </div>
+            <div className="flex justify-evenly gap-4 sm:text-xs mt-4">
+              <ReglaLink  />
+              <TransitionExample />
+            </div>
+            
+          </Container>
       </Container>
     </>
   );

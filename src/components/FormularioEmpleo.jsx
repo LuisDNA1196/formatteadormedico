@@ -22,6 +22,7 @@ import ReglaLink from './ReglaLink';
 import ButtonWitha from './ButtonWitha';
 import WhatsBox from './WhatsBox';
 import { initialFormDataEmpleo } from '../assets/formDatas';
+import TransitionExample from './WaModal';
 
 export const FormularioEmpleo = () => { 
  
@@ -288,16 +289,18 @@ export const FormularioEmpleo = () => {
         
         <Container className="text-center mt-4">
             <div className="flex justify-evenly gap-4 sm:text-xs">
-              <Button onClick={validateForm} colorScheme="green" rightIcon={<CopyIcon />} >
+              <Button onClick={validateForm} colorScheme="green" rightIcon={<CopyIcon />} className='w-[130px]' >
                 Copiar
               </Button>
-              <Button onClick={resetForm} colorScheme="orange" rightIcon={<RepeatIcon />}>
+              <Button onClick={resetForm} colorScheme="orange" rightIcon={<RepeatIcon />} className='w-[130px]'>
                 Reiniciar
               </Button>
             </div>
-            <div className="mt-4">
-              <ReglaLink />
+            <div className="flex justify-evenly gap-4 sm:text-xs mt-4">
+              <ReglaLink  />
+              <TransitionExample />
             </div>
+            
           </Container>
       </Container>
     </>
